@@ -53,4 +53,9 @@ calculateEstimationError(beta,beta_LS)
 # beta_LS - vector estimated by LS (could be a vector or a matrix with 1 column)
 calculatePredictionError <- function(Y, X, beta_LS){
   # Calculate and return error
+  X <- as.matrix(X)
+  Y <- as.vector(Y)
+  return (norm(Y -X%*%beta_LS, type = '2'))
 }
+
+calculatePredictionError(Y,X,beta_LS)
