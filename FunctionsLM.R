@@ -13,10 +13,10 @@ generateY <- function(X, beta, sigma, seed = 5832652){
 }
 
 sigma = 1 # noise standard deviation
-beta = c(2, 1, 3) # true vector of coefficients
+beta = c(2, 1) # true vector of coefficients
 # Training data generator
 n = 100 # sample size for training data
-X = matrix(matrix(c(1:9)), 3, 3) # 3 by 3 matrix of predictors
+X = matrix(matrix(c(1,1,4,5,1,4)), 3, 2) # 3 by 3 matrix of predictors
 # [generate Y for training data with default seed
 Y <- generateY(X,beta,sigma)
 
@@ -26,10 +26,14 @@ Y <- generateY(X,beta,sigma)
 # Y - response vector (could be a vector or a matrix with 1 column)
 calculateBeta <- function(X, Y){
   # Calculate beta_LS
-  
+  X <- as.matrix(X)
+  Y <- as.vector(Y)
+  beta_LS <- solve(t(X)%*%X)%*%t(X)%*%Y
   # Return beta
   return(beta_LS)
 }
+
+beta_LS <- calculateBeta(X,Y)
 
 # Calculate estimation error, defined as ||beta - beta_LS||_2^2
 # beta - true coefficient vector (could be a vector or a matrix with 1 column)
