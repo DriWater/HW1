@@ -40,8 +40,12 @@ beta_LS <- calculateBeta(X,Y)
 # beta_LS - vector estimated by LS (could be a vector or a matrix with 1 column)
 calculateEstimationError <- function(beta, beta_LS){
   # Calculate and return error
+  beta <- as.vector(beta)
+  beta_LS <- as.vector(beta_LS)
+  return(norm(beta - beta_LS, type = '2'))
 }
 
+calculateEstimationError(beta,beta_LS)
 
 # Calculate prediction error, defined as ||Y - X beta_LS||_2^2
 # Y - response vector (could be a vector or a matrix with 1 column)
