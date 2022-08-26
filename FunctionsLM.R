@@ -5,10 +5,20 @@
 # seed  - starting seed value, integer
 generateY <- function(X, beta, sigma, seed = 5832652){
   #Set seed and generate Y following linear model
-  
+  X <- as.matrix(X)
+  noise <- rnorm(nrow(X),0,sigma)
+  Y <- X%*%beta + noise
   # Return Y
   return(Y)
 }
+
+sigma = 1 # noise standard deviation
+beta = c(2, 1, 3) # true vector of coefficients
+# Training data generator
+n = 100 # sample size for training data
+X = matrix(matrix(c(1:9)), 3, 3) # 3 by 3 matrix of predictors
+# [generate Y for training data with default seed
+Y <- generateY(X,beta,sigma)
 
 # Calculate beta_LS - least-squares solution, do not use lm function
 # You can assume that X has full rank, so X'X inverse exists
