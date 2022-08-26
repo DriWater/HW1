@@ -13,11 +13,11 @@ beta = c(2, rep(0, p-1)) # true vector of coefficients
 n = 100 # sample size for training data
 X = matrix(rnorm(n * p), n, p) # n by p matrix of predictors
 # [ToDo] Use generateY function to generate Y for training data with default seed
-
+Y <- generateY(X,beta,sigma)
 # [ToDo] Use calculateBeta function to calculate beta_LS
-
+beta_LS <- calculateBeta(X,Y)
 # [ToDo] Use calculateEstimationError to assess the estimation error measured by squared eucledian distance - ||beta - beta_LS||_2^2. Report the error in the comments.
-
+calculateEstimationError(beta,beta_LS)
 
 # Testing data generator
 n = 200 # sample size for testing data
