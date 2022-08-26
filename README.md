@@ -1,6 +1,6 @@
 # Homework 1 - Getting started
 
-Student: *Last name*, *First name*
+Student: He, Shuren
 
 Helpful resources for R/Git/Github integration for troubleshooting:
 
