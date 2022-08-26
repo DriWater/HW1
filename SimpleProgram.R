@@ -17,7 +17,7 @@ Y <- generateY(X,beta,sigma)
 # [ToDo] Use calculateBeta function to calculate beta_LS
 beta_LS <- calculateBeta(X,Y)
 # [ToDo] Use calculateEstimationError to assess the estimation error measured by squared eucledian distance - ||beta - beta_LS||_2^2. Report the error in the comments.
-calculateEstimationError(beta,beta_LS)
+calculateEstimationError(beta,beta_LS) #0.3577914
 
 # Testing data generator
 n = 200 # sample size for testing data
