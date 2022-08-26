@@ -12,14 +12,6 @@ generateY <- function(X, beta, sigma, seed = 5832652){
   return(Y)
 }
 
-sigma = 1 # noise standard deviation
-beta = c(2, 1) # true vector of coefficients
-# Training data generator
-n = 100 # sample size for training data
-X = matrix(matrix(c(1,1,4,5,1,4)), 3, 2) # 3 by 3 matrix of predictors
-# [generate Y for training data with default seed
-Y <- generateY(X,beta,sigma)
-
 # Calculate beta_LS - least-squares solution, do not use lm function
 # You can assume that X has full rank, so X'X inverse exists
 # X - design matrix, rows are n samples
@@ -33,8 +25,6 @@ calculateBeta <- function(X, Y){
   return(beta_LS)
 }
 
-beta_LS <- calculateBeta(X,Y)
-
 # Calculate estimation error, defined as ||beta - beta_LS||_2^2
 # beta - true coefficient vector (could be a vector or a matrix with 1 column)
 # beta_LS - vector estimated by LS (could be a vector or a matrix with 1 column)
@@ -44,8 +34,6 @@ calculateEstimationError <- function(beta, beta_LS){
   beta_LS <- as.vector(beta_LS)
   return(norm(beta - beta_LS, type = '2'))
 }
-
-calculateEstimationError(beta,beta_LS)
 
 # Calculate prediction error, defined as ||Y - X beta_LS||_2^2
 # Y - response vector (could be a vector or a matrix with 1 column)
@@ -58,4 +46,3 @@ calculatePredictionError <- function(Y, X, beta_LS){
   return (norm(Y -X%*%beta_LS, type = '2'))
 }
 
-calculatePredictionError(Y,X,beta_LS)
